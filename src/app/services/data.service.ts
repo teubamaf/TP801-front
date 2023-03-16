@@ -11,8 +11,8 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  create(litre: number): Observable<any> {
-    return this.http.post<any>(`${this.URI}/data`, { litre });
+  create(litre: number, carburant: string): Observable<any> {
+    return this.http.post<any>(`${this.URI}/data`, { litre, carburant });
   }
 
   get(code: number): Observable<any> {

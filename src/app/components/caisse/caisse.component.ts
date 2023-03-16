@@ -16,7 +16,7 @@ export class CaisseComponent {
 
 
   onSubmitForm(){
-    this.dataservice.create((this.prixEssence)*2).pipe(
+    this.dataservice.create((this.prixEssence)*2, 'essence').pipe(
       tap(value =>{
         console.log(value);
         this.code = value.id;
