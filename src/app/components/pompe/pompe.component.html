@@ -1,4 +1,6 @@
-<div>
+<div class="body">
+    <h3>Pompe {{ carburant }}</h3>
+
     <label for="code">
         Entrez votre code
     </label>
@@ -15,5 +17,5 @@
 
     <button (click)="onValidateCode()">Valider</button>
 
-    <p *ngIf="error">{{ error }}</p>
+    <p class="error" *ngIf="error">{{ error }}</p>
 </div>
