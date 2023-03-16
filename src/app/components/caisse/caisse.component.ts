@@ -13,12 +13,12 @@ export class CaisseComponent {
 
   prixEssence!: number;
   code!: number;
+  typeEssence!: string;
 
 
   onSubmitForm(){
-    this.dataservice.create((this.prixEssence)*2, 'essence').pipe(
+    this.dataservice.create((this.prixEssence)*1.5, this.typeEssence).pipe(
       tap(value =>{
-        console.log(value);
         this.code = value.id;
       } )
     ).subscribe();
