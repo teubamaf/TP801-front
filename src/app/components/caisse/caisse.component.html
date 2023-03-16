@@ -1,1 +1,12 @@
-<p>caisse works!</p>
+<form (ngSubmit)="onSubmitForm()">
+<input type="search"
+            id="essenceInput"
+            name="essenceInput"
+            placeholder="Entrer les litres désirés"
+            [(ngModel)]="prixEssence"
+    >
+
+    <button type="submit">Valider</button>
+
+</form>
+<p *ngIf="code">{{code}}</p>
