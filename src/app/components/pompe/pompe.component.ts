@@ -41,7 +41,7 @@ export class PompeComponent implements OnInit {
           this.dataService.delete(this.code).subscribe();  
         } else {
           // on modifie
-          this.dataService.update(this.code, value.litre).subscribe();
+          this.dataService.update(this.code, value.litre, value.carburant).subscribe();
         }
       })
     ).subscribe();

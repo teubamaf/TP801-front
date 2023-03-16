@@ -1,17 +1,34 @@
-<form (ngSubmit)="onSubmitForm()">
-<input type="search"
-            id="essenceInput"
-            name="essenceInput"
-            placeholder="Entrer le prix"
-            [(ngModel)]="prixEssence"
-    >
+<div>
+    <h3>Caisse</h3>
 
-    <button type="submit">Valider</button>
+    <form (ngSubmit)="onSubmitForm()">
 
-    <select name="carburant" id="carburant" [(ngModel)]="typeEssence">
-        <option value="essence">essence</option>
-        <option value="diesel">diesel</option>
-    </select>
+        <label>
+            Choissiez le montant en €
+        </label>
+        <div>
+            <input type="search"
+                id="essenceInput"
+                name="essenceInput"
+                placeholder="Entrer le prix"
+                [(ngModel)]="prixEssence"
+            >
+        </div>
 
-</form>
-<p *ngIf="code">{{code}}</p>
+        <label>
+            Choissiez votre carburant :
+        </label>
+        <div>
+            <select name="carburant" id="carburant" [(ngModel)]="carburant">
+                <option value="essence">essence</option>
+                <option value="diesel">diesel</option>
+            </select>
+        </div>
+
+        <div>
+            <button type="submit">Valider</button>
+        </div>
+
+    </form>
+    <p *ngIf="code">{{code}}</p>
+</div>

@@ -13,11 +13,14 @@ export class CaisseComponent {
 
   prixEssence!: number;
   code!: number;
-  typeEssence!: string;
+  carburant!: string;
 
 
   onSubmitForm(){
-    this.dataservice.create((this.prixEssence)*1.5, this.typeEssence).pipe(
+    if (this.prixEssence <= 0 || this.prixEssence === undefined) return;
+    if (this.carburant === undefined || this.carburant.length == 0) return;
+
+    this.dataservice.create((this.prixEssence)*1.5, this.carburant).pipe(
       tap(value =>{
         this.code = value.id;
       } )

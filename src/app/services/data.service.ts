@@ -19,7 +19,7 @@ export class DataService {
     return this.http.get<any>(`${this.URI}/data/${code}`);
   }
 
-  update(code: number, litre: number): Observable<any> {
+  update(code: number, litre: number, carburant: string): Observable<any> {
     return this.http.put<any>(`${this.URI}/data/${code}`, { litre });
   }
 
