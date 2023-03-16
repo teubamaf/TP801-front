@@ -2,11 +2,16 @@
 <input type="search"
             id="essenceInput"
             name="essenceInput"
-            placeholder="Entrer les litres désirés"
+            placeholder="Entrer le prix"
             [(ngModel)]="prixEssence"
     >
 
     <button type="submit">Valider</button>
+
+    <select name="carburant" id="carburant" [(ngModel)]="typeEssence">
+        <option value="essence">essence</option>
+        <option value="diesel">diesel</option>
+    </select>
 
 </form>
 <p *ngIf="code">{{code}}</p>
