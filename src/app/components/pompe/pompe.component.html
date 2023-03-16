@@ -1,1 +1,19 @@
-<p>pompe works!</p>
+<div>
+    <label for="code">
+        Entrez votre code
+    </label>
+    <div>
+        <input type="number" [(ngModel)]="code" id="code" name="code" placeholder="Code" required>
+    </div>
+
+    <label for="code">
+        Entrez votre capacité de reservoir en L
+    </label>
+    <div>
+        <input type="number" [(ngModel)]="reservoir" id="reservoir" name="reservoir" placeholder="Capacité" required>
+    </div>
+
+    <button (click)="onValidateCode()">Valider</button>
+
+    <p *ngIf="error">{{ error }}</p>
+</div>
