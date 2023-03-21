@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { tap } from 'rxjs';
+import { Component, Input } from '@angular/core';
+import { catchError, tap } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { DataService } from 'src/app/services/data.service';
   templateUrl: './pompe.component.html',
   styleUrls: ['./pompe.component.scss']
 })
-export class PompeComponent implements OnInit {
+export class PompeComponent {
 
   code!: number;
   reservoir!: number;
@@ -18,21 +18,17 @@ export class PompeComponent implements OnInit {
 
   constructor(private dataService: DataService) { }
 
-  ngOnInit(): void {
-    console.log(this.carburant);
-  }
-
   onValidateCode() {
     if (this.code <= 0 || this.code === undefined) return;
     if (this.reservoir <= 0 || this.code === undefined) return;
 
     this.dataService.get(this.code).pipe(
+      // on gère l'erreur 404, si le code n'existe pas
+      catchError((err: any) => {
+        this.error = `Le code ${this.code} n'existe pas !`;
+        throw err;
+      }),
       tap(value => {
-        if (value == 404) {
-          this.error = `Ce code n'existe pas !`;
-          return;
-        }
-
         // verifie que l'on est à la bonne pompe
         if (value.carburant != this.carburant) {
           this.error = `Vous n'êtes pas à la bonne pompe, ici c'est ${this.carburant}`;
