@@ -12,6 +12,7 @@ export class PompeComponent implements OnInit {
   code!: number;
   reservoir!: number;
   error: string = '';
+  result: string = '';
 
   @Input() carburant!: string;
 
@@ -43,10 +44,12 @@ export class PompeComponent implements OnInit {
 
         if (value.litre <= 0) {
           // on supprime
-          this.dataService.delete(this.code).subscribe();  
+          this.dataService.delete(this.code).subscribe();
+          this.result = 'Après recharge, vous avez utilisé tous votre crédit de carburant !'; 
         } else {
           // on modifie
           this.dataService.update(this.code, value.litre, value.carburant).subscribe();
+          this.result = `Après recharge, il vous reste ${value.litre} litre de carburant !`;
         }
       })
     ).subscribe();
