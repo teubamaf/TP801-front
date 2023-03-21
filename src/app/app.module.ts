@@ -7,13 +7,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CaisseComponent } from './components/caisse/caisse.component';
 import { PompeComponent } from './components/pompe/pompe.component';
+import { PompeContainerComponent } from './components/pompe-container/pompe-container.component';
+import { HeaderComponent } from './components/header/header.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CaisseComponent,
-    PompeComponent
+    PompeComponent,
+    PompeContainerComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

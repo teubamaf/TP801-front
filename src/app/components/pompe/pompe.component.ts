@@ -27,6 +27,11 @@ export class PompeComponent implements OnInit {
 
     this.dataService.get(this.code).pipe(
       tap(value => {
+        if (value == 404) {
+          this.error = `Ce code n'existe pas !`;
+          return;
+        }
+
         // verifie que l'on est à la bonne pompe
         if (value.carburant != this.carburant) {
           this.error = `Vous n'êtes pas à la bonne pompe, ici c'est ${this.carburant}`;
