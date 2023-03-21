@@ -30,5 +30,8 @@
         </div>
 
     </form>
-    <p *ngIf="code">{{code}}</p>
+    <div *ngIf="response">
+        <p>Votre code est : {{ response.id }}</p>
+        <p>Vous avez acheté pour {{ response.litre }} litre de {{ response.carburant }}</p>
+    </div>
 </div>

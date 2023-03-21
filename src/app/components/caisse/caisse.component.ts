@@ -9,11 +9,12 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class CaisseComponent {
 
-  constructor(private dataservice : DataService){}
+  constructor(private dataservice : DataService) { }
 
   prixEssence!: number;
-  code!: number;
   carburant!: string;
+
+  response: { litre: number, carburant: string, id: number } | null = null;
 
 
   onSubmitForm(){
@@ -22,7 +23,7 @@ export class CaisseComponent {
 
     this.dataservice.create((this.prixEssence)*1.5, this.carburant).pipe(
       tap(value =>{
-        this.code = value.id;
+        this.response = value;
       } )
     ).subscribe();
   }
